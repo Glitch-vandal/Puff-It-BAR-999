@@ -282,10 +282,12 @@ select {
   border-color: rgba(255,255,255,0.04);
 }
 
-.device-svg {
+.product-photo {
   width: min(100%, 620px);
   position: relative;
   z-index: 1;
+  transform: translateY(-10px) scale(1.04);
+  filter: drop-shadow(0 24px 36px rgba(0, 0, 0, 0.4));
 }
 
 .mini-card {
