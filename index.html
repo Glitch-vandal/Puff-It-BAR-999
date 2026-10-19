@@ -3,543 +3,1298 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PIB Electronic Delivery Systems | Commercial Hardware Catalog</title>
+    <title>PIB Electronic Delivery Systems | Smart Hardware Platform</title>
     <style>
       :root {
-        --slate-gray: #2c3539;
-        --dark-obsidian: #121212;
-        --rose-gold: #b76e79;
-        --ice-white: #f5f5f7;
-        --muted-gray: #8e8e93;
-        --card-bg: #161617;
-        --border-color: #2c2c2e;
+        --bg: #071018;
+        --bg-soft: #0d1721;
+        --panel: rgba(12, 22, 31, 0.8);
+        --panel-strong: #121d27;
+        --panel-alt: #0e1a23;
+        --line: rgba(137, 169, 191, 0.18);
+        --text: #edf7ff;
+        --muted: #9bb6c8;
+        --brand: #7dd3fc;
+        --brand-strong: #22c55e;
+        --brand-warm: #f59e9e;
+        --accent: #9b8cff;
+        --glow: rgba(125, 211, 252, 0.22);
+        --success: #22c55e;
+        --shadow: 0 30px 80px rgba(4, 10, 15, 0.55);
       }
 
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
-        background-color: var(--dark-obsidian);
-        color: var(--ice-white);
-        overflow-x: hidden;
         min-height: 100vh;
+        background:
+          radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 20%),
+          radial-gradient(circle at top right, rgba(125, 211, 252, 0.2), transparent 25%),
+          linear-gradient(180deg, #040a10 0%, #071018 100%);
+        color: var(--text);
+        font-family: Inter, "Segoe UI", sans-serif;
+        overflow-x: hidden;
       }
 
-      #age-gate {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: var(--dark-obsidian);
-        z-index: 10000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-      }
-
-      .gate-card {
-        background-color: #1a1a1a;
-        border: 1px solid #2a2a2a;
-        padding: 40px;
-        border-radius: 12px;
-        text-align: center;
-        max-width: 450px;
-        width: 100%;
-      }
-
-      .gate-logo {
-        font-size: 2.5rem;
-        font-weight: 800;
-        letter-spacing: 4px;
-        color: var(--ice-white);
-        margin-bottom: 10px;
-      }
-
-      .gate-logo span {
-        color: var(--rose-gold);
-      }
-
-      .gate-card h2 {
-        font-size: 1.2rem;
-        margin-bottom: 25px;
-        color: var(--muted-gray);
-        font-weight: 400;
-      }
-
-      .gate-buttons {
-        display: flex;
-        gap: 15px;
-      }
-
-      .btn {
-        flex: 1;
-        padding: 15px;
-        border: none;
-        border-radius: 6px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-      }
-
-      .btn-confirm {
-        background-color: var(--rose-gold);
-        color: white;
+      img {
+        max-width: 100%;
         display: block;
-        width: 100%;
-        text-align: center;
       }
 
-      .btn-confirm:hover {
-        opacity: 0.9;
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
-      .btn-deny {
-        background-color: transparent;
-        color: var(--muted-gray);
-        border: 1px solid #3a3a3a;
+      button {
+        font: inherit;
       }
 
-      .btn-deny:hover {
-        background-color: #222;
-      }
-
-      #main-content {
-        display: none;
-        padding: 40px 20px;
-        max-width: 1100px;
+      .container {
+        width: min(1180px, calc(100% - 32px));
         margin: 0 auto;
       }
 
-      header {
-        text-align: center;
-        margin-bottom: 50px;
+      .section {
+        padding: 100px 0;
       }
 
-      .brand-logo {
-        font-size: 3rem;
-        font-weight: 900;
-        letter-spacing: 6px;
-        margin-bottom: 5px;
-      }
-
-      .brand-logo span {
-        color: var(--rose-gold);
-      }
-
-      .tagline {
-        color: var(--muted-gray);
-        font-size: 0.9rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-      }
-
-      .tab-container {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 40px;
-        flex-wrap: wrap;
-      }
-
-      .tab-btn {
-        background-color: #1c1c1e;
-        color: var(--muted-gray);
-        border: 1px solid var(--border-color);
-        padding: 12px 20px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 0.85rem;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .tab-btn.active,
-      .tab-btn:hover {
-        background-color: var(--rose-gold);
-        color: white;
-        border-color: var(--rose-gold);
-      }
-
-      .product-section {
-        display: none;
-      }
-
-      .product-section.active {
-        display: block;
-      }
-
-      .showcase-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 40px;
-        margin-bottom: 50px;
-      }
-
-      @media (min-width: 768px) {
-        .showcase-grid {
-          grid-template-columns: 1.2fr 1fr;
-        }
-      }
-
-      .profile-box {
-        background: linear-gradient(145deg, #181819, #121213);
-        border-radius: 12px;
-        padding: 35px;
-        border: 1px solid var(--border-color);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .model-badge {
+      .eyebrow {
         display: inline-block;
-        background-color: rgba(183, 110, 121, 0.15);
-        color: var(--rose-gold);
-        padding: 6px 14px;
-        border-radius: 20px;
+        margin-bottom: 14px;
+        color: var(--brand);
         font-size: 0.72rem;
-        font-weight: 700;
+        font-weight: 800;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 15px;
-        align-self: flex-start;
       }
 
-      .profile-box h2 {
+      .site-shell {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.55;
+        pointer-events: none;
+      }
+
+      .orb.one {
+        width: 420px;
+        height: 420px;
+        top: 80px;
+        left: -140px;
+        background: rgba(125, 211, 252, 0.18);
+      }
+
+      .orb.two {
+        width: 500px;
+        height: 500px;
+        right: -180px;
+        top: 260px;
+        background: rgba(155, 140, 255, 0.14);
+      }
+
+      .orb.three {
+        width: 350px;
+        height: 350px;
+        left: 45%;
+        bottom: 180px;
+        background: rgba(34, 197, 94, 0.12);
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        backdrop-filter: blur(18px);
+        background: rgba(6, 15, 22, 0.68);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 82px;
+        gap: 24px;
+      }
+
+      .brand-mark {
         font-size: 2rem;
-        margin-bottom: 15px;
-        letter-spacing: 1px;
+        font-weight: 900;
+        letter-spacing: 0.14em;
       }
 
-      .profile-box p {
-        color: var(--muted-gray);
+      .brand-mark span {
+        color: var(--brand);
+      }
+
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
         font-size: 0.95rem;
-        line-height: 1.6;
-        margin-bottom: 25px;
       }
 
-      .price-image-container {
+      .main-nav a {
+        transition: color 0.2s ease;
+      }
+
+      .main-nav a:hover,
+      .main-nav a:focus-visible {
+        color: var(--text);
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 20px;
+        border-radius: 999px;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--brand), var(--accent));
+        color: #03161d;
+        box-shadow: 0 18px 38px rgba(125, 211, 252, 0.2);
+      }
+
+      .hero {
+        position: relative;
+        padding: 90px 0 68px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.17fr 0.83fr;
+        gap: 44px;
+        align-items: center;
+      }
+
+      .hero-copy h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2.8rem, 6vw, 5.2rem);
+        line-height: 0.94;
+        letter-spacing: -0.07em;
+      }
+
+      .hero-copy p {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 22px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--brand), var(--accent));
+        color: #03161d;
+        box-shadow: 0 18px 42px rgba(125, 211, 252, 0.22);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.02);
+        border-color: var(--line);
+        color: var(--text);
+      }
+
+      .hero-stats {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+      }
+
+      .hero-stats li {
+        min-width: 110px;
+      }
+
+      .hero-stats strong {
+        display: block;
+        font-size: 1.5rem;
+      }
+
+      .hero-stats span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .device-stage {
+        position: relative;
+        min-height: 540px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, rgba(17, 28, 35, 0.9), rgba(9, 16, 19, 0.9));
+        border: 1px solid var(--line);
+        border-radius: 32px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .ambient-ring {
+        position: absolute;
+        border: 1px solid rgba(125, 211, 252, 0.45);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .ring-one {
+        width: 360px;
+        height: 360px;
+        animation: pulse 6s ease-in-out infinite;
+      }
+
+      .ring-two {
+        width: 440px;
+        height: 440px;
+        border-color: rgba(155, 140, 255, 0.28);
+        animation: pulse 7s ease-in-out infinite reverse;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(0.96); opacity: 0.55; }
+        50% { transform: scale(1.08); opacity: 1; }
+      }
+
+      .product-photo {
+        position: relative;
+        z-index: 2;
+        width: min(100%, 420px);
+        filter: drop-shadow(0 28px 55px rgba(0, 0, 0, 0.4));
+      }
+
+      .mini-card {
+        position: absolute;
+        z-index: 3;
+        background: rgba(15, 28, 35, 0.85);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px 18px;
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.26);
+      }
+
+      .mini-card span {
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-top: 6px;
+        font-size: 1.1rem;
+      }
+
+      .mini-one {
+        left: 28px;
+        bottom: 72px;
+      }
+
+      .mini-two {
+        right: 28px;
+        bottom: 18px;
+      }
+
+      .tech-strip {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: rgba(9, 16, 22, 0.6);
+      }
+
+      .tech-wrap {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 20px;
-        margin-bottom: 20px;
-        background-color: rgba(255, 255, 255, 0.02);
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #222;
+        padding: 22px 0;
+        color: var(--muted);
       }
 
-      .price-data {
+      .tech-wrap strong {
+        color: var(--text);
+      }
+
+      .tech-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tech-pills span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: rgba(125, 211, 252, 0.06);
+        border: 1px solid var(--line);
+        color: var(--text);
+      }
+
+      .catalog {
+        background: rgba(255, 255, 255, 0.01);
+      }
+
+      .section-heading {
+        margin-bottom: 34px;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        letter-spacing: -0.06em;
+      }
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .tab-btn {
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--muted);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 12px 18px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .tab-btn.active {
+        background: linear-gradient(135deg, var(--brand), var(--accent));
+        border-color: transparent;
+        color: #03161d;
+      }
+
+      .panel {
+        display: none;
+      }
+
+      .panel.active {
+        display: block;
+      }
+
+      .product-layout {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 28px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        padding: 8px 12px;
+        border: 1px solid rgba(125, 211, 252, 0.2);
+        background: rgba(125, 211, 252, 0.06);
+        color: var(--brand);
+        border-radius: 999px;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      .product-copy h3 {
+        margin: 0 0 14px;
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        letter-spacing: -0.05em;
+      }
+
+      .product-copy p {
+        color: var(--muted);
+        max-width: 560px;
+        line-height: 1.7;
+      }
+
+      .pricing-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        margin-top: 24px;
+      }
+
+      .pricing-row > div {
+        min-width: 120px;
+      }
+
+      .price-label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .pricing-row strong {
+        font-size: 1.8rem;
+      }
+
+      .spec-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 24px;
+      }
+
+      .spec-card h4 {
+        margin: 0 0 18px;
+        color: var(--brand);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      .spec-card dl {
+        margin: 0;
+      }
+
+      .spec-card dl > div {
+        padding: 15px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .spec-card dl > div:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .spec-card dt {
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      .spec-card dd {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .feature-card {
+        background: rgba(19, 28, 34, 0.86);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 28px 24px;
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.14);
+      }
+
+      .feature-card .icon {
+        display: inline-grid;
+        place-items: center;
+        width: 55px;
+        height: 55px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+        background: rgba(125, 211, 252, 0.09);
+        border: 1px solid rgba(125, 211, 252, 0.2);
+        color: var(--brand);
+        font-weight: 900;
+      }
+
+      .feature-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.4rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .benefits {
+        background: rgba(255,255,255,0.015);
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .check-list {
+        list-style: none;
+        margin: 26px 0 0;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+      }
+
+      .check-list li {
+        position: relative;
+        padding-left: 28px;
+        color: var(--muted);
+      }
+
+      .check-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--brand);
+        font-weight: 800;
+      }
+
+      .info-panel {
+        display: grid;
+        gap: 18px;
+      }
+
+      .stat-box {
+        background: rgba(15, 24, 31, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 22px 18px;
+      }
+
+      .stat-box strong {
+        display: block;
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+      }
+
+      .stat-box span {
+        color: var(--muted);
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .price-card {
+        position: relative;
+        background: rgba(14, 21, 28, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px 24px;
+      }
+
+      .price-card.featured {
+        background: linear-gradient(180deg, rgba(125, 211, 252, 0.08), rgba(13, 22, 30, 0.96));
+        border-color: rgba(125, 211, 252, 0.3);
+      }
+
+      .badge {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        border: 1px solid rgba(125, 211, 252, 0.25);
+        background: rgba(125, 211, 252, 0.08);
+        color: var(--brand);
+        border-radius: 999px;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 7px 10px;
+      }
+
+      .price-card h3 {
+        margin: 0 0 18px;
+        font-size: 1.5rem;
+      }
+
+      .amount {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 900;
+        letter-spacing: -0.06em;
+      }
+
+      .price-card p {
+        margin: 10px 0 18px;
+        color: var(--muted);
+      }
+
+      .price-card ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        color: var(--muted);
+      }
+
+      .price-card li::before {
+        content: "•";
+        color: var(--brand);
+        margin-right: 8px;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .faq-item {
+        background: rgba(13, 22, 31, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        color: var(--text);
+        text-align: left;
+        padding: 20px 24px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 200px;
+      }
+
+      .faq-answer p {
+        margin: 0;
+        padding: 0 24px 20px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--line);
+        background: rgba(255,255,255,0.012);
+        padding-top: 26px;
+      }
+
+      .footer-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding-bottom: 24px;
+      }
+
+      .footer-wrap p {
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+
+      .footer-cta {
+        text-align: right;
+      }
+
+      .footer-cta h3 {
+        margin: 0 0 16px;
+        font-size: 1.3rem;
+      }
+
+      .footer-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        border-top: 1px solid var(--line);
+        padding: 18px 0 28px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      #age-gate {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(3, 8, 12, 0.88);
+        backdrop-filter: blur(14px);
+        z-index: 1000;
+      }
+
+      .gate-card {
+        width: min(470px, 100%);
+        background: rgba(15, 25, 32, 0.96);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 34px 28px;
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.4);
+      }
+
+      .gate-card h2 {
+        margin: 18px 0 12px;
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        letter-spacing: -0.05em;
+      }
+
+      .gate-card p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .gate-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .gate-actions .btn {
         flex: 1;
       }
 
-      .price-tag {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--ice-white);
-        margin-bottom: 5px;
+      .hidden {
+        display: none !important;
       }
 
-      .price-tag span {
-        font-size: 0.85rem;
-        color: var(--muted-gray);
-        font-weight: 400;
-        margin-left: 5px;
+      @media (max-width: 980px) {
+        .hero-grid,
+        .benefits-grid,
+        .product-layout,
+        .feature-grid,
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .main-nav {
+          display: none;
+        }
+
+        .nav-cta {
+          display: none;
+        }
+
+        .tech-wrap,
+        .footer-wrap,
+        .footer-bar,
+        .gate-actions {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .footer-cta {
+          text-align: left;
+        }
       }
 
-      .product-thumbnail-box {
-        width: 140px;
-        height: 90px;
-        background-color: #1c1c1e;
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      }
+      @media (max-width: 640px) {
+        .section {
+          padding: 76px 0;
+        }
 
-      .product-thumbnail-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+        .hero {
+          padding-top: 60px;
+        }
 
-      .spec-box {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        padding: 35px;
-        border: 1px solid var(--border-color);
-      }
+        .hero-copy h1 {
+          font-size: 2.7rem;
+        }
 
-      .spec-box h3 {
-        font-size: 1.1rem;
-        color: var(--rose-gold);
-        margin-bottom: 20px;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .spec-list dt {
-        font-weight: 700;
-        color: var(--ice-white);
-        margin-top: 15px;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .spec-list dd {
-        color: var(--muted-gray);
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-        margin-left: 0;
-        line-height: 1.5;
-      }
-
-      .cta-section {
-        text-align: center;
-        background: linear-gradient(145deg, #1c1c1e, #121212);
-        padding: 45px;
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-        margin-bottom: 50px;
-      }
-
-      .cta-section h4 {
-        font-size: 1.6rem;
-        margin-bottom: 12px;
-        letter-spacing: 0.5px;
-      }
-
-      .cta-section p {
-        color: var(--muted-gray);
-        margin-bottom: 30px;
-        font-size: 0.95rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .cta-btn {
-        display: inline-block;
-        background-color: transparent;
-        color: var(--ice-white);
-        border: 2px solid var(--rose-gold);
-        padding: 16px 40px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 0.95rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
-      }
-
-      .cta-btn:hover {
-        background-color: var(--rose-gold);
-        color: white;
-        box-shadow: 0 0 20px rgba(183, 110, 121, 0.4);
-      }
-
-      .gov-warning {
-        background-color: white;
-        color: black;
-        padding: 25px;
-        font-weight: 700;
-        text-align: center;
-        border-radius: 4px;
-        border: 4px solid black;
-        font-size: 1.05rem;
-        line-height: 1.5;
+        .device-stage {
+          min-height: 420px;
+        }
       }
     </style>
   </head>
   <body>
     <div id="age-gate">
-      <div class="gate-card">
-        <div class="gate-logo">PIB<span>//</span></div>
-        <h2>ELECTRONIC DELIVERY SYSTEMS</h2>
-        <p style="font-size: 0.9rem; color: var(--muted-gray); margin-bottom: 25px;">
-          You must be 18 years of age or older to view the commercial hardware portfolio in South Africa.
+      <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
+        <div class="brand-mark">PIB<span>//</span></div>
+        <p class="eyebrow">Smart delivery systems</p>
+        <h2 id="age-gate-title">Age verification required</h2>
+        <p>
+          You must be 18 years of age or older to view this commercial hardware platform in South Africa.
         </p>
-        <div class="gate-buttons">
-          <button class="btn btn-confirm" onclick="document.getElementById('age-gate').style.display='none'; document.getElementById('main-content').style.display='block';">I am 18+</button>
-          <button class="btn btn-deny" onclick="window.location.href='https://google.co.za';">Exit</button>
+        <div class="gate-actions">
+          <button id="confirm-age" class="btn btn-primary">I am 18+</button>
+          <button id="deny-age" class="btn btn-secondary">Exit</button>
         </div>
       </div>
     </div>
 
-    <div id="main-content">
-      <header>
-        <div class="brand-logo">PIB<span>.</span></div>
-        <div class="tagline">System Evolution &amp; Deployment Line // South Africa</div>
+    <div id="site-shell" class="site-shell hidden">
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+      <div class="orb three"></div>
+
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <a href="#top" class="brand-mark" aria-label="PIB home">PIB<span>.</span></a>
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="#catalog">Catalog</a>
+            <a href="#features">Features</a>
+            <a href="#benefits">Why PIB</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <a href="#contact" class="nav-cta">Wholesale enquiry</a>
+        </div>
       </header>
 
-      <div class="tab-container">
-        <button class="tab-btn active" id="btn-1k" onclick="switchPanel('pib-1k', this)">1,500 Puffs (Base)</button>
-        <button class="tab-btn" id="btn-2k" onclick="switchPanel('pib-2k', this)">2,500 Puffs (Hybrid)</button>
-        <button class="tab-btn" id="btn-3k" onclick="switchPanel('pib-3k', this)">3,500 Puffs (Grid)</button>
-        <button class="tab-btn" id="btn-8k" onclick="switchPanel('pib-8k', this)">8,500 Puffs (Quantum Pro)</button>
-      </div>
-
-      <div id="pib-1k" class="product-section active">
-        <div class="showcase-grid">
-          <div class="profile-box">
-            <span class="model-badge">Tier 1: Entry Pocket System</span>
-            <h2>PIB One-K Plus</h2>
-            <p>The updated initial standard for compact mobile efficiency. Built from high-durability ABS polymer featuring an ultra-fine matte slip-resistant texture. Coordinated perfectly for first-time market entry and premium shelf visibility.</p>
-            <div class="price-image-container">
-              <div class="price-data">
-                <div class="price-tag">R120.00 <span>MSRP</span></div>
-                <div class="price-tag" style="font-size:1.05rem; color:var(--rose-gold); margin-bottom:0;">R55.00 <span>Wholesale Tier</span></div>
+      <main id="top">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">System evolution &amp; deployment line</span>
+              <h1>Built for smarter retail hardware.</h1>
+              <p>
+                PIB delivers scalable, tech-forward commercial delivery platforms engineered for secure retail performance,
+                premium product perception, and cleaner operational workflows across South Africa.
+              </p>
+              <div class="hero-actions">
+                <a href="#catalog" class="btn btn-primary">View catalog</a>
+                <a href="#contact" class="btn btn-secondary">Request pricing</a>
               </div>
-              <div class="product-thumbnail-box">
-                <img src="IMG_5014.jpeg" alt="PIB 1,500 Puffs Base System" />
+              <ul class="hero-stats" aria-label="Key company metrics">
+                <li><strong>4</strong><span>smart tiers</span></li>
+                <li><strong>R495</strong><span>flagship MSRP</span></li>
+                <li><strong>Q1 2027</strong><span>launch window</span></li>
+              </ul>
+            </div>
+
+            <div class="hero-visual" aria-label="PIB product showcase card">
+              <div class="device-stage">
+                <div class="ambient-ring ring-one"></div>
+                <div class="ambient-ring ring-two"></div>
+                <img class="product-photo" src="IMG_5014.jpeg" alt="PIB smart technology display" />
+                <div class="mini-card mini-one">
+                  <span>Smart safety</span>
+                  <strong>Dual-touch activation</strong>
+                </div>
+                <div class="mini-card mini-two">
+                  <span>Efficiency</span>
+                  <strong>Up to 8,500 puffs</strong>
+                </div>
               </div>
             </div>
           </div>
-          <div class="spec-box">
-            <h3>Engineering Specifications</h3>
-            <dl class="spec-list">
-              <dt>Fluid Capacity Architecture</dt>
-              <dd>3.5ml sealed internal reservoir optimized against a stable 400mAh cell network configuration.</dd>
-              <dt>Refraction-Corrected Level Markers</dt>
-              <dd>Interior glass prism layer etching reading vertical fluid levels across three thresholds: FULL, HALF, and FILL.</dd>
-              <dt>SARS Sin Tax Metric</dt>
-              <dd>Fixed baseline layout reduces upfront customs port clearing duties down to R11.52 ZAR per individual system.</dd>
-            </dl>
+        </section>
+
+        <div class="tech-strip">
+          <div class="container tech-wrap">
+            <strong>Flexible performance stack</strong>
+            <div class="tech-pills">
+              <span>Adaptive design</span>
+              <span>Commercial grade</span>
+              <span>Retail ready</span>
+              <span>Smart telemetry</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="pib-2k" class="product-section">
-        <div class="showcase-grid">
-          <div class="profile-box">
-            <span class="model-badge">Tier 2: Dual-Telem Matrix</span>
-            <h2>PIB Two-K Hybrid</h2>
-            <p>Visual telemetry evolution optimized for heavy handling. Features curved, smooth side bevel adjustments integrated with dual-sided metal-plated capacitive grip strips running through the full body shell.</p>
-            <div class="price-image-container">
-              <div class="price-data">
-                <div class="price-tag">R180.00 <span>MSRP</span></div>
-                <div class="price-tag" style="font-size:1.05rem; color:var(--rose-gold); margin-bottom:0;">R90.00 <span>Wholesale Tier</span></div>
+        <section id="catalog" class="catalog section">
+          <div class="container">
+            <div class="section-heading">
+              <span class="eyebrow">Product catalog</span>
+              <h2>Choose the right hardware layer for your market.</h2>
+            </div>
+
+            <div class="tabs" role="tablist" aria-label="PIB product selector">
+              <button class="tab-btn active" data-panel="panel-1k" role="tab" aria-selected="true">1,500 puffs</button>
+              <button class="tab-btn" data-panel="panel-2k" role="tab" aria-selected="false">2,500 puffs</button>
+              <button class="tab-btn" data-panel="panel-3k" role="tab" aria-selected="false">3,500 puffs</button>
+              <button class="tab-btn" data-panel="panel-8k" role="tab" aria-selected="false">8,500 puffs</button>
+            </div>
+
+            <div class="panel active" id="panel-1k">
+              <div class="product-layout">
+                <div class="product-copy">
+                  <span class="pill">Tier 1 · Entry system</span>
+                  <h3>PIB One-K Plus</h3>
+                  <p>
+                    The smart entry model for compact retail environments, delivering dependable performance, adaptive ergonomics,
+                    and a sleek low-profile design that scales naturally into wider product ecosystems.
+                  </p>
+                  <div class="pricing-row">
+                    <div>
+                      <span class="price-label">MSRP</span>
+                      <strong>R120.00</strong>
+                    </div>
+                    <div>
+                      <span class="price-label">Wholesale</span>
+                      <strong>R55.00</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="spec-card">
+                  <h4>Engineering specs</h4>
+                  <dl>
+                    <div><dt>Capacity</dt><dd>3.5ml sealed reservoir</dd></div>
+                    <div><dt>System</dt><dd>400mAh energy architecture</dd></div>
+                    <div><dt>Readout</dt><dd>Refraction-corrected level markers</dd></div>
+                  </dl>
+                </div>
               </div>
-              <div class="product-thumbnail-box">
-                <img src="IMG_5022.jpeg" alt="PIB 2,500 Puffs Hybrid System" />
+            </div>
+
+            <div class="panel" id="panel-2k">
+              <div class="product-layout">
+                <div class="product-copy">
+                  <span class="pill">Tier 2 · Hybrid control</span>
+                  <h3>PIB Two-K Hybrid</h3>
+                  <p>
+                    Built for high-frequency use and operational consistency, this range combines precision telemetry and durable,
+                    premium-shell engineering for retailers who need smoother in-store performance.
+                  </p>
+                  <div class="pricing-row">
+                    <div>
+                      <span class="price-label">MSRP</span>
+                      <strong>R180.00</strong>
+                    </div>
+                    <div>
+                      <span class="price-label">Wholesale</span>
+                      <strong>R90.00</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="spec-card">
+                  <h4>Engineering specs</h4>
+                  <dl>
+                    <div><dt>Capacity</dt><dd>5.5ml clear capsule bay</dd></div>
+                    <div><dt>System</dt><dd>Micro-LED telemetry matrix</dd></div>
+                    <div><dt>Readout</dt><dd>Precision digital HUD</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" id="panel-3k">
+              <div class="product-layout">
+                <div class="product-copy">
+                  <span class="pill">Tier 3 · Tactical grip</span>
+                  <h3>PIB Textured Tactical</h3>
+                  <p>
+                    Designed for high-capacity retail deployment with reinforced grip zones, stronger thermal handling, and a more
+                    premium visual identity for competitive shelf positioning.
+                  </p>
+                  <div class="pricing-row">
+                    <div>
+                      <span class="price-label">MSRP</span>
+                      <strong>R250.00</strong>
+                    </div>
+                    <div>
+                      <span class="price-label">Wholesale</span>
+                      <strong>R125.00</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="spec-card">
+                  <h4>Engineering specs</h4>
+                  <dl>
+                    <div><dt>Capacity</dt><dd>7.5ml clear pod capsule</dd></div>
+                    <div><dt>System</dt><dd>OLED metric tracking display</dd></div>
+                    <div><dt>Readout</dt><dd>Live puffs and usage data</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" id="panel-8k">
+              <div class="product-layout">
+                <div class="product-copy">
+                  <span class="pill">Tier 4 · Flagship platform</span>
+                  <h3>Quantum “Ghost” Pro</h3>
+                  <p>
+                    The flagship architecture for premium market capture, combining advanced finish quality, modular composition,
+                    and an elevated technical identity designed for standout retail experiences.
+                  </p>
+                  <div class="pricing-row">
+                    <div>
+                      <span class="price-label">MSRP</span>
+                      <strong>R495.00</strong>
+                    </div>
+                    <div>
+                      <span class="price-label">Wholesale</span>
+                      <strong>R200.00</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="spec-card">
+                  <h4>Engineering specs</h4>
+                  <dl>
+                    <div><dt>Capacity</dt><dd>Reusable frame with 6.0ml magnetic pod</dd></div>
+                    <div><dt>System</dt><dd>Dual-pole capacitive safety</dd></div>
+                    <div><dt>Readout</dt><dd>Obsidian OLED HUD</dd></div>
+                  </dl>
+                </div>
               </div>
             </div>
           </div>
-          <div class="spec-box">
-            <h3>Engineering Specifications</h3>
-            <dl class="spec-list">
-              <dt>Fluid Capacity Architecture</dt>
-              <dd>5.5ml upscaled clear PCTG capsule bay with sharp laser-etched interior indicators: FULL, HALF, and FILL.</dd>
-              <dt>Digital Stencil HUD Array</dt>
-              <dd>Replaces basic indicator lamps with micro-LED fuel cells pulsing through precision-punched micro-pores on the metal shell.</dd>
-              <dt>SARS Sin Tax Metric</dt>
-              <dd>Tax overhead managed at R18.10 ZAR per individual unit, balancing consumer longevity and distributor liquidity.</dd>
-            </dl>
-          </div>
-        </div>
-      </div>
+        </section>
 
-      <div id="pib-3k" class="product-section">
-        <div class="showcase-grid">
-          <div class="profile-box">
-            <span class="model-badge">Tier 3: Tactical Grip Variant</span>
-            <h2>PIB Textured Tactical</h2>
-            <p>Reinforced structural casing designed to accommodate high-capacity internal power grids. The full body is wrapped in our precision machine-milled, anti-slip tactile diamond grip surface for confident handling.</p>
-            <div class="price-image-container">
-              <div class="price-data">
-                <div class="price-tag">R250.00 <span>MSRP</span></div>
-                <div class="price-tag" style="font-size:1.05rem; color:var(--rose-gold); margin-bottom:0;">R125.00 <span>Wholesale Tier</span></div>
+        <section id="features" class="features section">
+          <div class="container">
+            <div class="section-heading narrow">
+              <span class="eyebrow">What sets PIB apart</span>
+              <h2>Performance-designed hardware with a smarter product story.</h2>
+            </div>
+
+            <div class="feature-grid">
+              <article class="feature-card">
+                <div class="icon">01</div>
+                <h3>Adaptive architecture</h3>
+                <p>Modular design language keeps each product tier compatible, scalable, and easy to position across retail channels.</p>
+              </article>
+              <article class="feature-card">
+                <div class="icon">02</div>
+                <h3>Intelligent retail fit</h3>
+                <p>High-clarity indicators, premium shells, and consistent brand language increase shelf confidence and conversion.</p>
+              </article>
+              <article class="feature-card">
+                <div class="icon">03</div>
+                <h3>Operational clarity</h3>
+                <p>Clean metrics, easy maintenance flow, and durable materials create a smoother experience for operators and buyers.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="benefits" class="benefits section">
+          <div class="container benefits-grid">
+            <div>
+              <span class="eyebrow">Why operators choose PIB</span>
+              <h2>Flexible systems for high-conviction retail rollout.</h2>
+              <ul class="check-list">
+                <li>Responsive commercial strategy for local and national rollout</li>
+                <li>Consistent design language across all product tiers</li>
+                <li>Scalable framework for distribution and merchandising</li>
+                <li>Premium visual identity built for modern smart-retail positioning</li>
+              </ul>
+            </div>
+
+            <div class="info-panel">
+              <div class="stat-box">
+                <strong>4</strong>
+                <span>tiered hardware systems</span>
               </div>
-              <div class="product-thumbnail-box">
-                <img src="IMG_5017.jpeg" alt="PIB 3,500 Puffs Grid Grip System" />
+              <div class="stat-box">
+                <strong>Q1 2027</strong>
+                <span>deployment schedule</span>
+              </div>
+              <div class="stat-box">
+                <strong>Wholesale</strong>
+                <span>application process</span>
               </div>
             </div>
           </div>
-          <div class="spec-box">
-            <h3>Engineering Specifications</h3>
-            <dl class="spec-list">
-              <dt>Fluid Capacity Architecture</dt>
-              <dd>7.5ml clear pod capsule backed by high-capillary microfiber wicks to ensure steady draws under low fuel thresholds.</dd>
-              <dt>Integrated Telemetry Interface</dt>
-              <dd>Vertical monochrome OLED screen reporting live metric tracking data points down to PUFFS: 0000 / 3500.</dd>
-              <dt>SARS Sin Tax Metric</dt>
-              <dd>Excise clearing calculation locks at R24.68 ZAR per system to provide strong long-term retail value perception.</dd>
-            </dl>
-          </div>
-        </div>
-      </div>
+        </section>
 
-      <div id="pib-8k" class="product-section">
-        <div class="showcase-grid">
-          <div class="profile-box">
-            <span class="model-badge">Tier 4: Flagship Luxury Pro</span>
-            <h2>Quantum "Ghost" Pro</h2>
-            <p>The peak of hardware engineering execution. Designed to be distinctly wider, longer, and heavier than the other three models. Built entirely out of hard-anodized slate gray aluminum alloy and soft-touch carbon grain overlays.</p>
-            <div class="price-image-container">
-              <div class="price-data">
-                <div class="price-tag">R495.00 <span>MSRP</span></div>
-                <div class="price-tag" style="font-size:1.05rem; color:var(--rose-gold); margin-bottom:0;">R200.00 <span>Wholesale Tier</span></div>
+        <section id="pricing" class="section">
+          <div class="container">
+            <div class="section-heading narrow">
+              <span class="eyebrow">Commercial pricing</span>
+              <h2>Flexible entry points for retail and wholesale expansion.</h2>
+            </div>
+
+            <div class="pricing-grid">
+              <article class="price-card">
+                <h3>Starter</h3>
+                <div class="amount">R55</div>
+                <p>Wholesale per unit</p>
+                <ul>
+                  <li>Entry-tier retail fit</li>
+                  <li>Fast-turn inventory</li>
+                  <li>Simple rollout model</li>
+                </ul>
+              </article>
+              <article class="price-card featured">
+                <span class="badge">Most popular</span>
+                <h3>Core</h3>
+                <div class="amount">R90</div>
+                <p>Wholesale per unit</p>
+                <ul>
+                  <li>Balanced performance</li>
+                  <li>Premium shelf presence</li>
+                  <li>High-volume appeal</li>
+                </ul>
+              </article>
+              <article class="price-card">
+                <h3>Flagship</h3>
+                <div class="amount">R200</div>
+                <p>Wholesale per unit</p>
+                <ul>
+                  <li>Luxury positioning</li>
+                  <li>Modular premium design</li>
+                  <li>Top-tier conversion</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="faq section">
+          <div class="container">
+            <div class="section-heading narrow">
+              <span class="eyebrow">Frequently asked questions</span>
+              <h2>Everything you need before ordering.</h2>
+            </div>
+
+            <div class="faq-list">
+              <div class="faq-item active">
+                <button class="faq-question" type="button">What are the ordering windows?</button>
+                <div class="faq-answer">
+                  <p>We are aligning rollout schedules for Q1 2027 retail and wholesale distribution across South Africa.</p>
+                </div>
               </div>
-              <div class="product-thumbnail-box">
-                <img src="IMG_5022.jpeg" alt="PIB 8,500 Puffs Quantum Pro Flagship System" />
+              <div class="faq-item">
+                <button class="faq-question" type="button">Do you support bulk allocation requests?</button>
+                <div class="faq-answer">
+                  <p>Yes. We support store chains, independent retailers, and multi-location commercial buyers.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">Can I request a product range summary?</button>
+                <div class="faq-answer">
+                  <p>Absolutely. We can recommend a product mix based on volume, market fit, and retail profile.</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="spec-box">
-            <h3>Engineering Specifications</h3>
-            <dl class="spec-list">
-              <dt>Secret Formula Touch Activation</dt>
-              <dd>Dual-pole capacitive touch strip safety circuit embedded on accent plates. Firing mechanics lock inertly unless gripped by human hands.</dd>
-              <dt>Tax-Optimized Modular Architecture</dt>
-              <dd>Reusable frame housing interchangeable 6.0ml clear magnetic pods. Drops your upfront customs port clearing tax from R59.22 down to only R19.74 per starter system.</dd>
-              <dt>Obsidian Mirror UI &amp; Ghost Firmware</dt>
-              <dd>Flush obsidian smoked glass panel hiding a crisp ice-white OLED metric HUD. Triple-tapping the grips turns off screen lighting for complete privacy.</dd>
-            </dl>
+        </section>
+      </main>
+
+      <footer id="contact" class="site-footer">
+        <div class="container footer-wrap">
+          <div>
+            <div class="brand-mark" style="font-size: 1.6rem;">PIB<span>//</span></div>
+            <p>Smart commercial hardware systems for modern retail operations.</p>
+          </div>
+
+          <div class="footer-cta">
+            <h3>Request wholesale access</h3>
+            <a href="mailto:onboarding@pibvapes.co.za?subject=PIB%20Wholesale%20Application" class="btn btn-primary">Start your application</a>
           </div>
         </div>
-      </div>
-
-      <div class="cta-section">
-        <h4>Commercial Procurement Allocation</h4>
-        <p>We are currently establishing national retail tier alignments for Q1 2027 shipping schedules across South Africa. Wholesalers, independent store managers, and bulk logistical buyers can submit their application directly.</p>
-        <a href="mailto:onboarding@pibvapes.co.za?subject=PIB%20Evolution%20Line%20Stock%20Allocation%20Request" class="cta-btn">Request Wholesale Application Form</a>
-      </div>
-
-      <div class="gov-warning">
-        Government Warning: Nicotine is highly addictive. Use of this product can impair judgment. For help to quit contact the national toll-free line on (011) 720 3145.
-      </div>
+        <div class="container footer-bar">
+          <span>© <span id="year"></span> PIB Electronic Delivery Systems</span>
+          <span>South Africa · Commercial allocation</span>
+        </div>
+      </footer>
     </div>
 
     <script>
-      function switchPanel(panelId, currentTab) {
-        var sections = document.getElementsByClassName('product-section');
-        for (var i = 0; i < sections.length; i++) {
-          sections[i].style.display = 'none';
-        }
-        var tabs = document.getElementsByClassName('tab-btn');
-        for (var j = 0; j < tabs.length; j++) {
-          tabs[j].classList.remove('active');
-        }
-        document.getElementById(panelId).style.display = 'block';
-        currentTab.classList.add('active');
+      const confirmAgeBtn = document.getElementById('confirm-age');
+      const denyAgeBtn = document.getElementById('deny-age');
+      const ageGate = document.getElementById('age-gate');
+      const siteShell = document.getElementById('site-shell');
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const panels = document.querySelectorAll('.panel');
+      const faqItems = document.querySelectorAll('.faq-item');
+      const yearEl = document.getElementById('year');
+
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
       }
+
+      function unlockSite() {
+        ageGate.classList.add('hidden');
+        siteShell.classList.remove('hidden');
+      }
+
+      if (confirmAgeBtn) {
+        confirmAgeBtn.addEventListener('click', unlockSite);
+      }
+
+      if (denyAgeBtn) {
+        denyAgeBtn.addEventListener('click', () => {
+          window.location.href = 'https://www.google.co.za';
+        });
+      }
+
+      tabButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const selectedPanel = button.dataset.panel;
+
+          tabButtons.forEach((tab) => {
+            const isActive = tab === button;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', String(isActive));
+          });
+
+          panels.forEach((panel) => {
+            panel.classList.toggle('active', panel.id === selectedPanel);
+          });
+        });
+      });
+
+      faqItems.forEach((item) => {
+        const trigger = item.querySelector('.faq-question');
+        if (!trigger) return;
+
+        trigger.addEventListener('click', () => {
+          const isOpen = item.classList.contains('active');
+
+          faqItems.forEach((faq) => faq.classList.remove('active'));
+
+          if (!isOpen) {
+            item.classList.add('active');
+          }
+        });
+      });
     </script>
   </body>
 </html>
