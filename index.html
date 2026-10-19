@@ -3,418 +3,543 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="PIB Electronic Delivery Systems offers premium commercial hardware for performance-driven retail and wholesale buyers."
-    />
-    <title>PIB Electronic Delivery Systems</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <title>PIB Electronic Delivery Systems | Commercial Hardware Catalog</title>
+    <style>
+      :root {
+        --slate-gray: #2c3539;
+        --dark-obsidian: #121212;
+        --rose-gold: #b76e79;
+        --ice-white: #f5f5f7;
+        --muted-gray: #8e8e93;
+        --card-bg: #161617;
+        --border-color: #2c2c2e;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      body {
+        background-color: var(--dark-obsidian);
+        color: var(--ice-white);
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      #age-gate {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--dark-obsidian);
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .gate-card {
+        background-color: #1a1a1a;
+        border: 1px solid #2a2a2a;
+        padding: 40px;
+        border-radius: 12px;
+        text-align: center;
+        max-width: 450px;
+        width: 100%;
+      }
+
+      .gate-logo {
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: 4px;
+        color: var(--ice-white);
+        margin-bottom: 10px;
+      }
+
+      .gate-logo span {
+        color: var(--rose-gold);
+      }
+
+      .gate-card h2 {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        color: var(--muted-gray);
+        font-weight: 400;
+      }
+
+      .gate-buttons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 15px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-confirm {
+        background-color: var(--rose-gold);
+        color: white;
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
+      .btn-confirm:hover {
+        opacity: 0.9;
+      }
+
+      .btn-deny {
+        background-color: transparent;
+        color: var(--muted-gray);
+        border: 1px solid #3a3a3a;
+      }
+
+      .btn-deny:hover {
+        background-color: #222;
+      }
+
+      #main-content {
+        display: none;
+        padding: 40px 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .brand-logo {
+        font-size: 3rem;
+        font-weight: 900;
+        letter-spacing: 6px;
+        margin-bottom: 5px;
+      }
+
+      .brand-logo span {
+        color: var(--rose-gold);
+      }
+
+      .tagline {
+        color: var(--muted-gray);
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .tab-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .tab-btn {
+        background-color: #1c1c1e;
+        color: var(--muted-gray);
+        border: 1px solid var(--border-color);
+        padding: 12px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .tab-btn.active,
+      .tab-btn:hover {
+        background-color: var(--rose-gold);
+        color: white;
+        border-color: var(--rose-gold);
+      }
+
+      .product-section {
+        display: none;
+      }
+
+      .product-section.active {
+        display: block;
+      }
+
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 50px;
+      }
+
+      @media (min-width: 768px) {
+        .showcase-grid {
+          grid-template-columns: 1.2fr 1fr;
+        }
+      }
+
+      .profile-box {
+        background: linear-gradient(145deg, #181819, #121213);
+        border-radius: 12px;
+        padding: 35px;
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .model-badge {
+        display: inline-block;
+        background-color: rgba(183, 110, 121, 0.15);
+        color: var(--rose-gold);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 15px;
+        align-self: flex-start;
+      }
+
+      .profile-box h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+      }
+
+      .profile-box p {
+        color: var(--muted-gray);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
+      }
+
+      .price-image-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 20px;
+        background-color: rgba(255, 255, 255, 0.02);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #222;
+      }
+
+      .price-data {
+        flex: 1;
+      }
+
+      .price-tag {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--ice-white);
+        margin-bottom: 5px;
+      }
+
+      .price-tag span {
+        font-size: 0.85rem;
+        color: var(--muted-gray);
+        font-weight: 400;
+        margin-left: 5px;
+      }
+
+      .product-thumbnail-box {
+        width: 140px;
+        height: 90px;
+        background-color: #1c1c1e;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .product-thumbnail-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .spec-box {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 35px;
+        border: 1px solid var(--border-color);
+      }
+
+      .spec-box h3 {
+        font-size: 1.1rem;
+        color: var(--rose-gold);
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .spec-list dt {
+        font-weight: 700;
+        color: var(--ice-white);
+        margin-top: 15px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .spec-list dd {
+        color: var(--muted-gray);
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        margin-left: 0;
+        line-height: 1.5;
+      }
+
+      .cta-section {
+        text-align: center;
+        background: linear-gradient(145deg, #1c1c1e, #121212);
+        padding: 45px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        margin-bottom: 50px;
+      }
+
+      .cta-section h4 {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      .cta-section p {
+        color: var(--muted-gray);
+        margin-bottom: 30px;
+        font-size: 0.95rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        background-color: transparent;
+        color: var(--ice-white);
+        border: 2px solid var(--rose-gold);
+        padding: 16px 40px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+
+      .cta-btn:hover {
+        background-color: var(--rose-gold);
+        color: white;
+        box-shadow: 0 0 20px rgba(183, 110, 121, 0.4);
+      }
+
+      .gov-warning {
+        background-color: white;
+        color: black;
+        padding: 25px;
+        font-weight: 700;
+        text-align: center;
+        border-radius: 4px;
+        border: 4px solid black;
+        font-size: 1.05rem;
+        line-height: 1.5;
+      }
+    </style>
   </head>
   <body>
-    <div id="age-gate" class="age-gate" aria-live="polite">
-      <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
-        <div class="brand-mark">PIB<span>//</span></div>
-        <p class="eyebrow">Electronic delivery systems</p>
-        <h1 id="age-gate-title">Age verification required</h1>
-        <p>
-          You must be 18 years of age or older to view our commercial hardware portfolio in South Africa.
+    <div id="age-gate">
+      <div class="gate-card">
+        <div class="gate-logo">PIB<span>//</span></div>
+        <h2>ELECTRONIC DELIVERY SYSTEMS</h2>
+        <p style="font-size: 0.9rem; color: var(--muted-gray); margin-bottom: 25px;">
+          You must be 18 years of age or older to view the commercial hardware portfolio in South Africa.
         </p>
-        <div class="gate-actions">
-          <button id="confirm-age" class="btn btn-primary">I am 18+</button>
-          <button id="deny-age" class="btn btn-secondary">Exit</button>
+        <div class="gate-buttons">
+          <button class="btn btn-confirm" onclick="document.getElementById('age-gate').style.display='none'; document.getElementById('main-content').style.display='block';">I am 18+</button>
+          <button class="btn btn-deny" onclick="window.location.href='https://google.co.za';">Exit</button>
         </div>
       </div>
     </div>
 
-    <div id="site-shell" class="site-shell hidden">
-      <header class="site-header">
-        <div class="container nav-wrap">
-          <a href="#top" class="logo" aria-label="PIB home">PIB<span>.</span></a>
-          <nav class="main-nav" aria-label="Main navigation">
-            <a href="#catalog">Catalog</a>
-            <a href="#features">Features</a>
-            <a href="#benefits">Why PIB</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#contact">Contact</a>
-          </nav>
-          <a href="#contact" class="btn btn-primary nav-cta">Wholesale enquiry</a>
-        </div>
+    <div id="main-content">
+      <header>
+        <div class="brand-logo">PIB<span>.</span></div>
+        <div class="tagline">System Evolution &amp; Deployment Line // South Africa</div>
       </header>
 
-      <main id="top">
-        <section class="hero">
-          <div class="hero-noise"></div>
-          <div class="container hero-grid">
-            <div class="hero-copy">
-              <span class="eyebrow">System evolution &amp; deployment line</span>
-              <h1>Built for the next generation of commercial delivery hardware.</h1>
-              <p>
-                PIB delivers dependable performance, premium materials, and flexible deployment options for retailers,
-                wholesalers, and commercial operators across South Africa.
-              </p>
-              <div class="hero-actions">
-                <a href="#catalog" class="btn btn-primary">View catalog</a>
-                <a href="#contact" class="btn btn-secondary">Request pricing</a>
-              </div>
-              <ul class="hero-stats" aria-label="Key company metrics">
-                <li><strong>4</strong><span>product tiers</span></li>
-                <li><strong>R495</strong><span>premium MSRP</span></li>
-                <li><strong>Q1 2027</strong><span>launch window</span></li>
-              </ul>
-            </div>
+      <div class="tab-container">
+        <button class="tab-btn active" id="btn-1k" onclick="switchPanel('pib-1k', this)">1,500 Puffs (Base)</button>
+        <button class="tab-btn" id="btn-2k" onclick="switchPanel('pib-2k', this)">2,500 Puffs (Hybrid)</button>
+        <button class="tab-btn" id="btn-3k" onclick="switchPanel('pib-3k', this)">3,500 Puffs (Grid)</button>
+        <button class="tab-btn" id="btn-8k" onclick="switchPanel('pib-8k', this)">8,500 Puffs (Quantum Pro)</button>
+      </div>
 
-            <div class="hero-visual" aria-label="PIB product showcase card">
-              <div class="device-stage">
-                <div class="ambient-ring ring-one"></div>
-                <div class="ambient-ring ring-two"></div>
-                <img class="product-photo" src="assets/pib-floating-device-transparent.svg" alt="PIB Quantum Pro floating device render" />
-                <div class="mini-card mini-one">
-                  <span>Capacitive safety</span>
-                  <strong>Dual-touch activation</strong>
-                </div>
-                <div class="mini-card mini-two">
-                  <span>Efficiency</span>
-                  <strong>Up to 8,500 puffs</strong>
-                </div>
+      <div id="pib-1k" class="product-section active">
+        <div class="showcase-grid">
+          <div class="profile-box">
+            <span class="model-badge">Tier 1: Entry Pocket System</span>
+            <h2>PIB One-K Plus</h2>
+            <p>The updated initial standard for compact mobile efficiency. Built from high-durability ABS polymer featuring an ultra-fine matte slip-resistant texture. Coordinated perfectly for first-time market entry and premium shelf visibility.</p>
+            <div class="price-image-container">
+              <div class="price-data">
+                <div class="price-tag">R120.00 <span>MSRP</span></div>
+                <div class="price-tag" style="font-size:1.05rem; color:var(--rose-gold); margin-bottom:0;">R55.00 <span>Wholesale Tier</span></div>
+              </div>
+              <div class="product-thumbnail-box">
+                <img src="IMG_5014.jpeg" alt="PIB 1,500 Puffs Base System" />
               </div>
             </div>
           </div>
-        </section>
-
-        <section class="gallery-showcase section">
-          <div class="container">
-            <div class="section-heading narrow">
-              <span class="eyebrow">Product imagery</span>
-              <h3>Studio shots, packaging, and product engineering.</h3>
-            </div>
-
-            <div class="image-grid">
-              <figure class="image-card image-card-lg">
-                <img src="assets/pib-device-side.svg" alt="PIB device product shot" />
-                <figcaption>Premium retail product shot</figcaption>
-              </figure>
-              <figure class="image-card">
-                <img src="assets/pib-box-product.svg" alt="PIB box and device display" />
-                <figcaption>Consumer retail packaging</figcaption>
-              </figure>
-              <figure class="image-card">
-                <img src="assets/pib-box-product-angled.svg" alt="PIB product packaging angled view" />
-                <figcaption>Brand presentation</figcaption>
-              </figure>
-              <figure class="image-card image-card-wide">
-                <img src="assets/pib-technical-blueprint.svg" alt="PIB technical product blueprint" />
-                <figcaption>Manufacturing and engineering spec</figcaption>
-              </figure>
-            </div>
-          </div>
-        </section>
-
-        <section class="trust-bar">
-          <div class="container trust-wrap">
-            <div>
-              <span class="eyebrow">Trusted for scale</span>
-              <h2>Performance-built systems for high-conviction retail rollout.</h2>
-            </div>
-            <div class="trust-pills">
-              <span>Retail ready</span>
-              <span>Commercial grade</span>
-              <span>South Africa</span>
-            </div>
-          </div>
-        </section>
-
-        <section id="catalog" class="catalog section">
-          <div class="container">
-            <div class="section-heading">
-              <span class="eyebrow">Product catalog</span>
-              <h3>Choose the right system for your market.</h3>
-            </div>
-
-            <div class="tabs" role="tablist" aria-label="PIB product line selector">
-              <button class="tab-btn active" data-panel="panel-1k" role="tab" aria-selected="true">1,500 puffs</button>
-              <button class="tab-btn" data-panel="panel-2k" role="tab" aria-selected="false">2,500 puffs</button>
-              <button class="tab-btn" data-panel="panel-3k" role="tab" aria-selected="false">3,500 puffs</button>
-              <button class="tab-btn" data-panel="panel-8k" role="tab" aria-selected="false">8,500 puffs</button>
-            </div>
-
-            <div class="panel active" id="panel-1k">
-              <div class="product-layout">
-                <div class="product-copy">
-                  <span class="pill">Tier 1 · Entry pocket system</span>
-                  <h4>PIB One-K Plus</h4>
-                  <p>
-                    The updated standard for compact, reliable performance for smaller retail spaces and first-time market entry.
-                  </p>
-                  <div class="pricing-row">
-                    <div>
-                      <span class="price-label">MSRP</span>
-                      <strong>R120.00</strong>
-                    </div>
-                    <div>
-                      <span class="price-label">Wholesale</span>
-                      <strong>R55.00</strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="spec-card">
-                  <h5>Engineering specs</h5>
-                  <dl>
-                    <div><dt>Capacity</dt><dd>3.5ml sealed internal reservoir</dd></div>
-                    <div><dt>System</dt><dd>400mAh cell architecture</dd></div>
-                    <div><dt>Readout</dt><dd>Refraction-corrected level markers</dd></div>
-                  </dl>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel" id="panel-2k">
-              <div class="product-layout">
-                <div class="product-copy">
-                  <span class="pill">Tier 2 · Dual-telemetry matrix</span>
-                  <h4>PIB Two-K Hybrid</h4>
-                  <p>
-                    Optimized for heavier handling and durable daily use with improved grip and visual readouts for premium retail shelves.
-                  </p>
-                  <div class="pricing-row">
-                    <div>
-                      <span class="price-label">MSRP</span>
-                      <strong>R180.00</strong>
-                    </div>
-                    <div>
-                      <span class="price-label">Wholesale</span>
-                      <strong>R90.00</strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="spec-card">
-                  <h5>Engineering specs</h5>
-                  <dl>
-                    <div><dt>Capacity</dt><dd>5.5ml clear PCTG capsule bay</dd></div>
-                    <div><dt>System</dt><dd>Micro-LED fuel indicator array</dd></div>
-                    <div><dt>Readout</dt><dd>Precision digital telemetry HUD</dd></div>
-                  </dl>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel" id="panel-3k">
-              <div class="product-layout">
-                <div class="product-copy">
-                  <span class="pill">Tier 3 · Tactical grip variant</span>
-                  <h4>PIB Textured Tactical</h4>
-                  <p>
-                    A ruggedized design engineered for high-capacity use and display-value performance in premium retail environments.
-                  </p>
-                  <div class="pricing-row">
-                    <div>
-                      <span class="price-label">MSRP</span>
-                      <strong>R250.00</strong>
-                    </div>
-                    <div>
-                      <span class="price-label">Wholesale</span>
-                      <strong>R125.00</strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="spec-card">
-                  <h5>Engineering specs</h5>
-                  <dl>
-                    <div><dt>Capacity</dt><dd>7.5ml clear pod capsule</dd></div>
-                    <div><dt>System</dt><dd>OLED metric tracking display</dd></div>
-                    <div><dt>Readout</dt><dd>Live metrics down to puffs used</dd></div>
-                  </dl>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel" id="panel-8k">
-              <div class="product-layout">
-                <div class="product-copy">
-                  <span class="pill">Tier 4 · Flagship luxury pro</span>
-                  <h4>Quantum “Ghost” Pro</h4>
-                  <p>
-                    Engineered for the most demanding placements with a premium shell, modular pod architecture, and discreet UI experience.
-                  </p>
-                  <div class="pricing-row">
-                    <div>
-                      <span class="price-label">MSRP</span>
-                      <strong>R495.00</strong>
-                    </div>
-                    <div>
-                      <span class="price-label">Wholesale</span>
-                      <strong>R200.00</strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="spec-card">
-                  <h5>Engineering specs</h5>
-                  <dl>
-                    <div><dt>Capacity</dt><dd>Reusable frame with 6.0ml magnetic pod</dd></div>
-                    <div><dt>System</dt><dd>Dual-pole capacitive touch safety</dd></div>
-                    <div><dt>Readout</dt><dd>Obsidian glass OLED HUD</dd></div>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="features" class="features section">
-          <div class="container">
-            <div class="section-heading narrow">
-              <span class="eyebrow">What sets PIB apart</span>
-              <h3>Performance-focused design, crafted for scale.</h3>
-            </div>
-
-            <div class="feature-grid">
-              <article class="feature-card">
-                <div class="icon">01</div>
-                <h4>Commercial durability</h4>
-                <p>High-quality housing, reinforced shell geometry, and robust grip textures built for active use.</p>
-              </article>
-              <article class="feature-card">
-                <div class="icon">02</div>
-                <h4>Modular architecture</h4>
-                <p>Flexible design language across the range supports efficient merchandising and tailored retail strategy.</p>
-              </article>
-              <article class="feature-card">
-                <div class="icon">03</div>
-                <h4>Retail-ready tracking</h4>
-                <p>Metrics, indicator systems, and display clarity improve both consumer confidence and in-store trust.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="benefits" class="benefits section alt-bg">
-          <div class="container benefits-grid">
-            <div>
-              <span class="eyebrow">Why operators choose PIB</span>
-              <h3>Sell smarter with a modern, premium commercial hardware line.</h3>
-              <ul class="check-list">
-                <li>Responsive pricing strategy for wholesalers and retailers</li>
-                <li>Clean, marketable design language for multiple price tiers</li>
-                <li>Consistent product family identity across the full range</li>
-                <li>Scalable rollout planning for multi-store national distribution</li>
-              </ul>
-            </div>
-
-            <div class="info-panel">
-              <div class="stat-box">
-                <strong>4</strong>
-                <span>tiered systems</span>
-              </div>
-              <div class="stat-box">
-                <strong>Q1 2027</strong>
-                <span>launch schedule</span>
-              </div>
-              <div class="stat-box">
-                <strong>Wholesale</strong>
-                <span>application process</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="pricing" class="section pricing">
-          <div class="container">
-            <div class="section-heading narrow">
-              <span class="eyebrow">Commercial pricing</span>
-              <h3>Flexible entry points for retail and wholesale expansion.</h3>
-            </div>
-
-            <div class="pricing-grid">
-              <article class="price-card">
-                <h4>Starter</h4>
-                <div class="amount">R55</div>
-                <p>Wholesale per unit</p>
-                <ul>
-                  <li>Entry-tier retail fit</li>
-                  <li>Compact inventory strategy</li>
-                  <li>Fast-turn product line</li>
-                </ul>
-              </article>
-              <article class="price-card featured">
-                <span class="badge">Most popular</span>
-                <h4>Core</h4>
-                <div class="amount">R90</div>
-                <p>Wholesale per unit</p>
-                <ul>
-                  <li>Balanced performance profile</li>
-                  <li>Premium shelf visibility</li>
-                  <li>High-volume demand fit</li>
-                </ul>
-              </article>
-              <article class="price-card">
-                <h4>Flagship</h4>
-                <div class="amount">R200</div>
-                <p>Wholesale per unit</p>
-                <ul>
-                  <li>Luxury positioning</li>
-                  <li>Modular premium architecture</li>
-                  <li>Top-tier retail conversion</li>
-                </ul>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="faq section">
-          <div class="container">
-            <div class="section-heading narrow">
-              <span class="eyebrow">Frequently asked questions</span>
-              <h3>Everything you need to know before ordering.</h3>
-            </div>
-
-            <div class="faq-list">
-              <div class="faq-item active">
-                <button class="faq-question" type="button">What are the ordering windows?</button>
-                <div class="faq-answer">
-                  <p>PIB is currently aligning national retail and wholesale rollout schedules for Q1 2027 shipping and distribution planning.</p>
-                </div>
-              </div>
-              <div class="faq-item">
-                <button class="faq-question" type="button">Do you support bulk allocation requests?</button>
-                <div class="faq-answer">
-                  <p>Yes. We support wholesale enquiries for stores, distributors, and multi-location commercial buyers.</p>
-                </div>
-              </div>
-              <div class="faq-item">
-                <button class="faq-question" type="button">Can I request a product range summary?</button>
-                <div class="faq-answer">
-                  <p>Absolutely. Our onboarding team can provide a curated range recommendation based on your volume and retail profile.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer id="contact" class="site-footer">
-        <div class="container footer-wrap">
-          <div>
-            <div class="brand-mark smaller">PIB<span>//</span></div>
-            <p>Commercial hardware systems for modern retail operations.</p>
-          </div>
-
-          <div class="footer-cta">
-            <h4>Request wholesale access</h4>
-            <a href="mailto:onboarding@pibvapes.co.za?subject=PIB%20Wholesale%20Application" class="btn btn-primary">Start your application</a>
+          <div class="spec-box">
+            <h3>Engineering Specifications</h3>
+            <dl class="spec-list">
+              <dt>Fluid Capacity Architecture</dt>
+              <dd>3.5ml sealed internal reservoir optimized against a stable 400mAh cell network configuration.</dd>
+              <dt>Refraction-Corrected Level Markers</dt>
+              <dd>Interior glass prism layer etching reading vertical fluid levels across three thresholds: FULL, HALF, and FILL.</dd>
+              <dt>SARS Sin Tax Metric</dt>
+              <dd>Fixed baseline layout reduces upfront customs port clearing duties down to R11.52 ZAR per individual system.</dd>
+            </dl>
           </div>
         </div>
-        <div class="container footer-bar">
-          <span>© <span id="year"></span> PIB Electronic Delivery Systems</span>
-          <span>South Africa · Commercial allocation</span>
+      </div>
+
+      <div id="pib-2k" class="product-section">
+        <div class="showcase-grid">
+          <div class="profile-box">
+            <span class="model-badge">Tier 2: Dual-Telem Matrix</span>
+            <h2>PIB Two-K Hybrid</h2>
+            <p>Visual telemetry evolution optimized for heavy handling. Features curved, smooth side bevel adjustments integrated with dual-sided metal-plated capacitive grip strips running through the full body shell.</p>
+            <div class="price-image-container">
+              <div class="price-data">
+                <div class="price-tag">R180.00 <span>MSRP</span></div>
+                <div class="price-tag" style="font-size:1.05rem; color:var(--rose-gold); margin-bottom:0;">R90.00 <span>Wholesale Tier</span></div>
+              </div>
+              <div class="product-thumbnail-box">
+                <img src="IMG_5022.jpeg" alt="PIB 2,500 Puffs Hybrid System" />
+              </div>
+            </div>
+          </div>
+          <div class="spec-box">
+            <h3>Engineering Specifications</h3>
+            <dl class="spec-list">
+              <dt>Fluid Capacity Architecture</dt>
+              <dd>5.5ml upscaled clear PCTG capsule bay with sharp laser-etched interior indicators: FULL, HALF, and FILL.</dd>
+              <dt>Digital Stencil HUD Array</dt>
+              <dd>Replaces basic indicator lamps with micro-LED fuel cells pulsing through precision-punched micro-pores on the metal shell.</dd>
+              <dt>SARS Sin Tax Metric</dt>
+              <dd>Tax overhead managed at R18.10 ZAR per individual unit, balancing consumer longevity and distributor liquidity.</dd>
+            </dl>
+          </div>
         </div>
-      </footer>
+      </div>
+
+      <div id="pib-3k" class="product-section">
+        <div class="showcase-grid">
+          <div class="profile-box">
+            <span class="model-badge">Tier 3: Tactical Grip Variant</span>
+            <h2>PIB Textured Tactical</h2>
+            <p>Reinforced structural casing designed to accommodate high-capacity internal power grids. The full body is wrapped in our precision machine-milled, anti-slip tactile diamond grip surface for confident handling.</p>
+            <div class="price-image-container">
+              <div class="price-data">
+                <div class="price-tag">R250.00 <span>MSRP</span></div>
+                <div class="price-tag" style="font-size:1.05rem; color:var(--rose-gold); margin-bottom:0;">R125.00 <span>Wholesale Tier</span></div>
+              </div>
+              <div class="product-thumbnail-box">
+                <img src="IMG_5017.jpeg" alt="PIB 3,500 Puffs Grid Grip System" />
+              </div>
+            </div>
+          </div>
+          <div class="spec-box">
+            <h3>Engineering Specifications</h3>
+            <dl class="spec-list">
+              <dt>Fluid Capacity Architecture</dt>
+              <dd>7.5ml clear pod capsule backed by high-capillary microfiber wicks to ensure steady draws under low fuel thresholds.</dd>
+              <dt>Integrated Telemetry Interface</dt>
+              <dd>Vertical monochrome OLED screen reporting live metric tracking data points down to PUFFS: 0000 / 3500.</dd>
+              <dt>SARS Sin Tax Metric</dt>
+              <dd>Excise clearing calculation locks at R24.68 ZAR per system to provide strong long-term retail value perception.</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div id="pib-8k" class="product-section">
+        <div class="showcase-grid">
+          <div class="profile-box">
+            <span class="model-badge">Tier 4: Flagship Luxury Pro</span>
+            <h2>Quantum "Ghost" Pro</h2>
+            <p>The peak of hardware engineering execution. Designed to be distinctly wider, longer, and heavier than the other three models. Built entirely out of hard-anodized slate gray aluminum alloy and soft-touch carbon grain overlays.</p>
+            <div class="price-image-container">
+              <div class="price-data">
+                <div class="price-tag">R495.00 <span>MSRP</span></div>
+                <div class="price-tag" style="font-size:1.05rem; color:var(--rose-gold); margin-bottom:0;">R200.00 <span>Wholesale Tier</span></div>
+              </div>
+              <div class="product-thumbnail-box">
+                <img src="IMG_5022.jpeg" alt="PIB 8,500 Puffs Quantum Pro Flagship System" />
+              </div>
+            </div>
+          </div>
+          <div class="spec-box">
+            <h3>Engineering Specifications</h3>
+            <dl class="spec-list">
+              <dt>Secret Formula Touch Activation</dt>
+              <dd>Dual-pole capacitive touch strip safety circuit embedded on accent plates. Firing mechanics lock inertly unless gripped by human hands.</dd>
+              <dt>Tax-Optimized Modular Architecture</dt>
+              <dd>Reusable frame housing interchangeable 6.0ml clear magnetic pods. Drops your upfront customs port clearing tax from R59.22 down to only R19.74 per starter system.</dd>
+              <dt>Obsidian Mirror UI &amp; Ghost Firmware</dt>
+              <dd>Flush obsidian smoked glass panel hiding a crisp ice-white OLED metric HUD. Triple-tapping the grips turns off screen lighting for complete privacy.</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h4>Commercial Procurement Allocation</h4>
+        <p>We are currently establishing national retail tier alignments for Q1 2027 shipping schedules across South Africa. Wholesalers, independent store managers, and bulk logistical buyers can submit their application directly.</p>
+        <a href="mailto:onboarding@pibvapes.co.za?subject=PIB%20Evolution%20Line%20Stock%20Allocation%20Request" class="cta-btn">Request Wholesale Application Form</a>
+      </div>
+
+      <div class="gov-warning">
+        Government Warning: Nicotine is highly addictive. Use of this product can impair judgment. For help to quit contact the national toll-free line on (011) 720 3145.
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+      function switchPanel(panelId, currentTab) {
+        var sections = document.getElementsByClassName('product-section');
+        for (var i = 0; i < sections.length; i++) {
+          sections[i].style.display = 'none';
+        }
+        var tabs = document.getElementsByClassName('tab-btn');
+        for (var j = 0; j < tabs.length; j++) {
+          tabs[j].classList.remove('active');
+        }
+        document.getElementById(panelId).style.display = 'block';
+        currentTab.classList.add('active');
+      }
+    </script>
   </body>
 </html>
