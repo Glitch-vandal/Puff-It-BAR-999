@@ -1,0 +1,38 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="boxDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#20262b"/>
+      <stop offset="100%" stop-color="#101417"/>
+    </linearGradient>
+    <linearGradient id="deviceBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c9ced2"/>
+      <stop offset="15%" stop-color="#7e8389"/>
+      <stop offset="52%" stop-color="#3b4046"/>
+      <stop offset="100%" stop-color="#0d1013"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="760" fill="#d5d5d5"/>
+  <rect x="250" y="150" width="440" height="500" fill="url(#boxDark)" rx="10" filter="url(#shadow)"/>
+  <text x="470" y="260" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="110" font-weight="800" fill="#d9dfe5" letter-spacing="2">PIB</text>
+
+  <g filter="url(#shadow)">
+    <path d="M760 350L930 420V610L760 540V350Z" fill="#1a1d21"/>
+    <path d="M720 335L860 332V515L720 518V335Z" fill="url(#deviceBody)" stroke="#20262b"/>
+    <path d="M710 335L830 335L830 520H710Z" fill="#111315" opacity="0.62"/>
+    <path d="M735 348L812 348C831 348 846 363 846 382V402C846 421 831 436 812 436H735C716 436 701 421 701 402V382C701 363 716 348 735 348Z" fill="#0f1316"/>
+    <rect x="710" y="365" width="130" height="68" rx="14" fill="#b7bec7" opacity="0.16"/>
+    <rect x="748" y="383" width="50" height="12" rx="6" fill="#d998a0" opacity="0.45"/>
+    <rect x="740" y="440" width="118" height="16" rx="8" fill="#1d2126"/>
+    <rect x="740" y="465" width="78" height="10" rx="5" fill="#d998a0" opacity="0.3"/>
+    <rect x="760" y="500" width="82" height="14" rx="7" fill="#d998a0" opacity="0.22"/>
+  </g>
+
+  <rect x="340" y="520" width="250" height="52" fill="#f1f1f1" opacity="0.9"/>
+  <text x="465" y="548" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#0a0d10">TROPICAL PUNCH ICE // 2.0ml</text>
+  <rect x="340" y="575" width="240" height="42" fill="#14171a"/>
+  <text x="460" y="603" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#f5f5f5">GOVERNMENT WARNING</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dfe2e4"/>
+      <stop offset="100%" stop-color="#c0c6ca"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d2d6d9"/>
+      <stop offset="18%" stop-color="#7a7f85"/>
+      <stop offset="56%" stop-color="#404550"/>
+      <stop offset="100%" stop-color="#0c0f12"/>
+    </linearGradient>
+    <linearGradient id="pinkGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff5cd1"/>
+      <stop offset="38%" stop-color="#dd64d8"/>
+      <stop offset="60%" stop-color="#f7d45d"/>
+      <stop offset="100%" stop-color="#f0bf62"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="22" stdDeviation="26" flood-color="#000000" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#paper)"/>
+  <g opacity="0.17">
+    <path d="M0 0 L1600 1000 M0 1000 L1600 0" stroke="#7d8388"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="260" y="180" width="450" height="590" fill="#1b1f23" rx="10"/>
+    <text x="485" y="320" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="140" font-weight="800" fill="#dfe5ea" letter-spacing="2">PIB</text>
+    <path d="M770 336L960 418V649L770 577V336Z" fill="#171b1f"/>
+    <path d="M762 345L905 344L905 540H762V345Z" fill="url(#metal)"/>
+    <path d="M785 372L873 372C887 372 898 383 898 397V431C898 445 887 456 873 456H785C771 456 760 445 760 431V397C760 383 771 372 785 372Z" fill="#0f1316"/>
+    <rect x="776" y="383" width="90" height="18" rx="9" fill="#d998a0" opacity="0.38"/>
+    <rect x="781" y="443" width="128" height="18" rx="9" fill="#1b1e22"/>
+    <rect x="510" y="470" width="210" height="18" rx="9" fill="#f1f1f1" opacity="0.82"/>
+    <text x="615" y="585" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#0d1115">TROPICAL PUNCH ICE // 2.0ml</text>
+    <rect x="473" y="610" width="280" height="110" fill="#f4f4f4"/>
+    <text x="613" y="653" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#0d1115">GOVERNMENT WARNING:</text>
+    <text x="613" y="690" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#0d1115">NICOTINE IS HIGHLY ADDICTIVE.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <path d="M900 530L1100 610L1170 680L970 710L900 530Z" fill="#1e2225"/>
+    <path d="M970 430C1013 430 1043 455 1043 494V612C1043 653 1013 680 970 680C927 680 897 653 897 612V494C897 455 927 430 970 430Z" fill="url(#metal)"/>
+    <rect x="927" y="472" width="88" height="16" rx="8" fill="#d998a0" opacity="0.26"/>
+    <path d="M912 500H1030V630H912Z" fill="#111418" opacity="0.8"/>
+    <path d="M907 523C956 523 989 550 989 591V610C989 650 966 660 930 660C895 660 875 643 875 601V586C875 552 882 523 907 523Z" fill="url(#pinkGold)" opacity="0.9"/>
+    <text x="1065" y="600" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#14181d" transform="rotate(-90 1065 600)">PUFFS: 0000 / 2000</text>
+  </g>
+</svg>

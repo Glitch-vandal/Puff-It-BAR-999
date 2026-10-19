@@ -1,0 +1,54 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a2d31"/>
+      <stop offset="100%" stop-color="#101315"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d7d9dc"/>
+      <stop offset="18%" stop-color="#70757b"/>
+      <stop offset="50%" stop-color="#3c4045"/>
+      <stop offset="100%" stop-color="#171b1f"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f325bf"/>
+      <stop offset="45%" stop-color="#b948d4"/>
+      <stop offset="60%" stop-color="#f5c178"/>
+      <stop offset="100%" stop-color="#f8d983"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="760" fill="#1b1d1f"/>
+  <rect width="1200" height="760" fill="url(#bg)" opacity="0.82"/>
+
+  <g filter="url(#shadow)">
+    <path d="M180 260L980 260C1015 260 1044 289 1044 324V462C1044 497 1015 526 980 526H180C145 526 116 497 116 462V324C116 289 145 260 180 260Z" fill="url(#metal)"/>
+    <path d="M220 290H930C952 290 970 308 970 330V455C970 476 952 494 930 494H220C198 494 180 476 180 455V330C180 308 198 290 220 290Z" fill="#111315" opacity="0.7"/>
+    <path d="M270 333L850 333C872 333 890 351 890 373V415C890 437 872 455 850 455H270C248 455 230 437 230 415V373C230 351 248 333 270 333Z" fill="#0a0d10"/>
+    <rect x="768" y="298" width="110" height="20" rx="10" fill="#d998a0" opacity="0.35"/>
+    <rect x="318" y="300" width="46" height="10" rx="5" fill="#ddd" opacity="0.6"/>
+    <rect x="315" y="319" width="84" height="12" rx="6" fill="#d998a0" opacity="0.28"/>
+    <rect x="294" y="366" width="410" height="74" rx="18" fill="#111418"/>
+    <text x="500" y="408" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f3f4f5">PUFFS: 0000 / 2000</text>
+    <rect x="358" y="355" width="34" height="18" rx="8" fill="#d7d9dc" opacity="0.3"/>
+    <rect x="420" y="355" width="34" height="18" rx="8" fill="#d7d9dc" opacity="0.2"/>
+    <rect x="482" y="355" width="34" height="18" rx="8" fill="#d7d9dc" opacity="0.2"/>
+    <rect x="548" y="355" width="34" height="18" rx="8" fill="#d7d9dc" opacity="0.2"/>
+    <rect x="614" y="355" width="34" height="18" rx="8" fill="#d7d9dc" opacity="0.2"/>
+    <rect x="680" y="355" width="34" height="18" rx="8" fill="#d7d9dc" opacity="0.2"/>
+    <path d="M810 319L845 319L845 484L810 484Z" fill="#20262b" opacity="0.8"/>
+    <path d="M760 270L900 270L900 510L760 510Z" fill="url(#glow)" opacity="0.12"/>
+    <path d="M821 280L920 280V510H821V280Z" fill="#11151a"/>
+    <path d="M821 280C860 280 883 300 883 334V456C883 490 860 510 821 510L821 280Z" fill="url(#glow)" opacity="0.75"/>
+    <path d="M820 280L918 280V510H820V280Z" fill="url(#glow)" opacity="0.12"/>
+    <path d="M820 316L860 316" stroke="#fbe4bf" stroke-width="3" opacity="0.75"/>
+    <path d="M820 364L860 364" stroke="#f0d3d8" stroke-width="3" opacity="0.75"/>
+    <rect x="142" y="370" width="60" height="52" rx="18" fill="#1d2025"/>
+    <rect x="152" y="382" width="40" height="30" rx="12" fill="#1f2124"/>
+    <rect x="158" y="387" width="28" height="18" rx="9" fill="#d998a0" opacity="0.4"/>
+    <rect x="480" y="460" width="160" height="18" rx="9" fill="#d998a0" opacity="0.2"/>
+  </g>
+</svg>

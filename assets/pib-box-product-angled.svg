@@ -1,0 +1,44 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dfe3e6"/>
+      <stop offset="100%" stop-color="#b7bcbe"/>
+    </linearGradient>
+    <linearGradient id="boxGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2327"/>
+      <stop offset="100%" stop-color="#0c0f11"/>
+    </linearGradient>
+    <linearGradient id="deviceGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#cdd2d6"/>
+      <stop offset="25%" stop-color="#8a8f95"/>
+      <stop offset="68%" stop-color="#3b3f46"/>
+      <stop offset="100%" stop-color="#0b0e10"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="28" stdDeviation="22" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="760" fill="url(#bgLight)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="260" y="110" width="420" height="540" rx="8" fill="url(#boxGrad)"/>
+    <text x="470" y="220" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="116" font-weight="800" fill="#d9dfe5" letter-spacing="2">PIB</text>
+
+    <path d="M730 330L845 380V580L730 540V330Z" fill="#1d2125"/>
+    <path d="M725 350L840 350L840 516H725Z" fill="url(#deviceGrad)"/>
+    <rect x="740" y="410" width="110" height="22" rx="11" fill="#d998a0" opacity="0.24"/>
+    <path d="M785 345L860 345L860 500H785V345Z" fill="#111519" opacity="0.75"/>
+    <rect x="765" y="420" width="65" height="38" rx="8" fill="#d998a0" opacity="0.35"/>
+    <rect x="760" y="455" width="88" height="12" rx="6" fill="#d5d7d9" opacity="0.28"/>
+    <rect x="760" y="480" width="70" height="10" rx="5" fill="#d5d7d9" opacity="0.2"/>
+  </g>
+
+  <rect x="320" y="515" width="290" height="72" fill="#f4f4f4" opacity="0.92"/>
+  <text x="465" y="560" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" fill="#14181b">TROPICAL PUNCH ICE // 2.0ml</text>
+
+  <rect x="318" y="600" width="300" height="145" fill="#f5f5f5"/>
+  <text x="468" y="642" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="800" fill="#0d1115">GOVERNMENT WARNING:</text>
+  <text x="468" y="680" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#0d1115">NICOTINE IS HIGHLY ADDICTIVE.</text>
+  <text x="468" y="708" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#0d1115">USE THIS PRODUCT CAN IMPAIR JUDGMENT.</text>
+</svg>
