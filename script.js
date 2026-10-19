@@ -6,18 +6,29 @@ const tabButtons = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.panel');
 const faqItems = document.querySelectorAll('.faq-item');
 const yearEl = document.getElementById('year');
+const AGE_KEY = 'pib_age_verified';
 
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-function unlockSite() {
-  ageGate.classList.add('hidden');
-  siteShell.classList.remove('hidden');
+function applyGateState() {
+  const isVerified = sessionStorage.getItem(AGE_KEY) === 'true';
+
+  if (ageGate) {
+    ageGate.classList.toggle('hidden', isVerified);
+  }
+
+  if (siteShell) {
+    siteShell.classList.toggle('hidden', !isVerified);
+  }
 }
 
 if (confirmAgeBtn) {
-  confirmAgeBtn.addEventListener('click', unlockSite);
+  confirmAgeBtn.addEventListener('click', () => {
+    sessionStorage.setItem(AGE_KEY, 'true');
+    applyGateState();
+  });
 }
 
 if (denyAgeBtn) {
@@ -25,6 +36,8 @@ if (denyAgeBtn) {
     window.location.href = 'https://www.google.co.za';
   });
 }
+
+applyGateState();
 
 tabButtons.forEach((button) => {
   button.addEventListener('click', () => {

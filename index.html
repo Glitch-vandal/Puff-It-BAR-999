@@ -49,10 +49,11 @@
 
       <main id="top">
         <section class="hero">
+          <div class="hero-noise"></div>
           <div class="container hero-grid">
             <div class="hero-copy">
               <span class="eyebrow">System evolution &amp; deployment line</span>
-              <h2>Built for the next generation of commercial delivery hardware.</h2>
+              <h1>Built for the next generation of commercial delivery hardware.</h1>
               <p>
                 PIB delivers dependable performance, premium materials, and flexible deployment options for retailers,
                 wholesalers, and commercial operators across South Africa.
@@ -69,28 +70,73 @@
             </div>
 
             <div class="hero-visual" aria-label="PIB product showcase card">
-              <div class="device-card device-main">
-                <div class="device-header">
-                  <span class="status-dot"></span>
-                  <span class="status-dot inactive"></span>
-                  <span class="status-dot inactive"></span>
+              <div class="device-stage">
+                <div class="ambient-ring ring-one"></div>
+                <div class="ambient-ring ring-two"></div>
+                <svg class="device-svg" viewBox="0 0 760 760" role="img" aria-label="PIB Quantum Pro device">
+                  <defs>
+                    <linearGradient id="deviceGlow" x1="10%" y1="10%" x2="90%" y2="90%">
+                      <stop offset="0%" stop-color="#2c2f34" />
+                      <stop offset="16%" stop-color="#171a1d" />
+                      <stop offset="62%" stop-color="#101316" />
+                      <stop offset="100%" stop-color="#090b0d" />
+                    </linearGradient>
+                    <linearGradient id="screenGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#21262b" />
+                      <stop offset="100%" stop-color="#090d10" />
+                    </linearGradient>
+                    <linearGradient id="roseAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#f0c5cb" />
+                      <stop offset="50%" stop-color="#d998a0" />
+                      <stop offset="100%" stop-color="#b76e79" />
+                    </linearGradient>
+                    <filter id="deviceShadow" x="-30%" y="-30%" width="160%" height="180%">
+                      <feDropShadow dx="0" dy="32" stdDeviation="28" flood-color="#000" flood-opacity="0.52"/>
+                    </filter>
+                  </defs>
+                  <g filter="url(#deviceShadow)">
+                    <path d="M550 130L690 200V560L550 490V130Z" fill="#101316" opacity="0.95" />
+                    <path d="M180 160L550 160L690 220L310 220L180 160Z" fill="#1a1d21" opacity="0.9" />
+                    <path d="M180 160L550 160V500L180 500V160Z" fill="url(#deviceGlow)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+                    <path d="M210 190L520 190V470L210 470V190Z" fill="url(#screenGlow)" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+                    <path d="M212 192H516" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+                    <path d="M230 225H500" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+                    <path d="M232 290H498" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
+                    <path d="M238 340H490" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
+                    <circle cx="244" cy="216" r="7" fill="#45d08b"/>
+                    <circle cx="264" cy="216" r="7" fill="#7c838a"/>
+                    <circle cx="284" cy="216" r="7" fill="#7c838a"/>
+                    <rect x="296" y="300" width="150" height="28" rx="14" fill="rgba(217,152,160,0.18)" stroke="rgba(217,152,160,0.22)"/>
+                    <text x="370" y="320" text-anchor="middle" font-size="18" font-weight="800" letter-spacing="4" fill="#d998a0" font-family="Inter, Arial, sans-serif">PIB</text>
+                    <text x="371" y="382" text-anchor="middle" font-size="30" font-weight="800" fill="#f5f5f5" font-family="Inter, Arial, sans-serif">Quantum Pro</text>
+                    <text x="371" y="414" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="3" fill="#a7a7ab" font-family="Inter, Arial, sans-serif">8,500 PUFFS</text>
+                    <rect x="280" y="430" width="125" height="14" rx="7" fill="url(#roseAccent)"/>
+                    <rect x="420" y="430" width="100" height="14" rx="7" fill="#1b1d20" stroke="rgba(255,255,255,0.08)"/>
+                  </g>
+                </svg>
+                <div class="mini-card mini-one">
+                  <span>Capacitive safety</span>
+                  <strong>Dual-touch activation</strong>
                 </div>
-                <div class="device-body">
-                  <div class="device-shimmer"></div>
-                  <div class="device-plate">
-                    <span class="device-label">PIB</span>
-                    <strong>Quantum Pro</strong>
-                  </div>
+                <div class="mini-card mini-two">
+                  <span>Efficiency</span>
+                  <strong>Up to 8,500 puffs</strong>
                 </div>
               </div>
-              <div class="mini-card mini-one">
-                <span>Capacitive safety</span>
-                <strong>Dual-touch activation</strong>
-              </div>
-              <div class="mini-card mini-two">
-                <span>Efficiency</span>
-                <strong>Up to 8,500 puffs</strong>
-              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="trust-bar">
+          <div class="container trust-wrap">
+            <div>
+              <span class="eyebrow">Trusted for scale</span>
+              <h2>Performance-built systems for high-conviction retail rollout.</h2>
+            </div>
+            <div class="trust-pills">
+              <span>Retail ready</span>
+              <span>Commercial grade</span>
+              <span>South Africa</span>
             </div>
           </div>
         </section>
